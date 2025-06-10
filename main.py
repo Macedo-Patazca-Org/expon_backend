@@ -7,6 +7,10 @@ from src.expon.presentation.interfaces.rest.controllers.presentation_controller 
 from src.expon.feedback.interfaces.rest.controllers.feedback_controller import router as feedback_router
 from src.expon.subscription.interfaces.rest.controllers.subscription_controller import router as subscription_router
 
+from src.expon.shared.infrastructure.database import Base, engine
+from src.expon.iam.infrastructure.persistence.jpa.entities.user_entity import UserEntity
+
+
 app = FastAPI(
     title="Expon Backend API",
     version="1.0.0",
@@ -19,6 +23,8 @@ app.include_router(profile_router, prefix="/api/v1/profile", tags=["Perfil"])
 app.include_router(presentation_router, prefix="/api/v1/presentation", tags=["Presentaciones"])
 app.include_router(feedback_router, prefix="/api/v1/feedback", tags=["Feedback"])
 app.include_router(subscription_router, prefix="/api/v1/subscription", tags=["Suscripciones"])
+
+Base.metadata.create_all(bind=engine)
 
 # Ruta raíz temporal
 @app.get("/")
