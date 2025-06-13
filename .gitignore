@@ -3,6 +3,7 @@ env/
 ENV/
 .venv/
 .ENV/
+*.env
 
 # Python
 __pycache__/
@@ -29,3 +30,8 @@ Thumbs.db
 *.egg-info/
 build/
 dist/
+
+# Ignorar archivos compilados por Python
+__pycache__/
+*.py[cod]
+
