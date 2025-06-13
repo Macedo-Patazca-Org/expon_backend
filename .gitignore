@@ -1,0 +1,31 @@
+# Ignorar entorno virtual
+env/
+ENV/
+.venv/
+.ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editores
+.vscode/
+.idea/
+
+# Archivos de log
+*.log
+
+# Variables de entorno
+.env
+
+# Compilados o binarios temporales
+*.egg-info/
+build/
+dist/
