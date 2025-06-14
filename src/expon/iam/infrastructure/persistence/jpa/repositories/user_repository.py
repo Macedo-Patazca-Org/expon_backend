@@ -33,3 +33,16 @@ class UserRepository:
             created_at=entity.created_at,
             updated_at=entity.updated_at
         )
+
+    def find_by_id(self, user_id: str) -> User | None:
+        entity = self.db.query(UserEntity).filter_by(id=user_id).first()
+        if not entity:
+            return None
+        return User(
+            id=entity.id,
+            username=entity.username,
+            email=entity.email,
+            password=entity.password,
+            created_at=entity.created_at,
+            updated_at=entity.updated_at
+        )
