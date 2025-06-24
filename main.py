@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 
-# Importar routers (aún no existen, pero dejaré como ejemplo base)
 from src.expon.iam.interfaces.rest.controllers.auth_controller import router as auth_router
 from src.expon.profile.interfaces.rest.controllers.profile_controller import router as profile_router
 from src.expon.presentation.interfaces.rest.controllers.presentation_controller import router as presentation_router
@@ -8,7 +7,7 @@ from src.expon.feedback.interfaces.rest.controllers.feedback_controller import r
 from src.expon.subscription.interfaces.rest.controllers.subscription_controller import router as subscription_router
 
 from src.expon.shared.infrastructure.database import Base, engine
-from src.expon.iam.infrastructure.persistence.jpa.entities.user_entity import UserEntity
+# from src.expon.iam.infrastructure.persistence.jpa.entities.user_entity import UserEntity
 
 
 app = FastAPI(
@@ -17,12 +16,12 @@ app = FastAPI(
     description="Backend estructurado por bounded contexts con FastAPI"
 )
 
-# Incluir routers
-app.include_router(auth_router, prefix="/api/v1/auth", tags=["Autenticación"])
-app.include_router(profile_router, prefix="/api/v1/profile", tags=["Perfil"])
-app.include_router(presentation_router, prefix="/api/v1/presentation", tags=["Presentaciones"])
+# routers
+app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
+app.include_router(profile_router, prefix="/api/v1/profile", tags=["Profile"])
+app.include_router(presentation_router, prefix="/api/v1/presentation", tags=["Presentations"])
 app.include_router(feedback_router, prefix="/api/v1/feedback", tags=["Feedback"])
-app.include_router(subscription_router, prefix="/api/v1/subscription", tags=["Suscripciones"])
+app.include_router(subscription_router, prefix="/api/v1/subscription", tags=["Subscriptions"])
 
 Base.metadata.create_all(bind=engine)
 

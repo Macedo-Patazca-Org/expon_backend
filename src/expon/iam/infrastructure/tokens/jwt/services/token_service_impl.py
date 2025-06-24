@@ -1,10 +1,10 @@
 import jwt
 from datetime import datetime, timedelta
 from src.expon.iam.domain.model.aggregates.user import User
-from decouple import config  # usa python-decouple para leer tu .env
+from decouple import config 
 
 class TokenService:
-    SECRET_KEY = config("JWT_SECRET_KEY", default="secret")  # asegúrate que esté en .env
+    SECRET_KEY = config("JWT_SECRET_KEY", default="secret") 
     ALGORITHM = "HS256"
     EXPIRE_MINUTES = 60
 
