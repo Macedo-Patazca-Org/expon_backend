@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from src.expon.presentation.domain.model.aggregates.presentation import Presentation
 from src.expon.presentation.domain.model.valueobjects.audio_metadata import AudioMetadata
 from src.expon.presentation.infrastructure.persistence.jpa.models.presentation_orm import PresentationORM
+from typing import Optional
 
 class PresentationRepository:
     def __init__(self, db: Session):
@@ -24,3 +25,7 @@ class PresentationRepository:
         self.db.add(db_model)
         self.db.commit()
         # return db_model  # Descomenta si necesitas retornar el objeto guardado
+        
+    def get_by_id(self, presentation_id: str) -> Optional[PresentationORM]:
+        return self.db.query(PresentationORM).filter(PresentationORM.id == presentation_id).first()
+

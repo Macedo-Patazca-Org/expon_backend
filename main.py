@@ -3,9 +3,9 @@ from fastapi import FastAPI
 from src.expon.iam.interfaces.rest.controllers.auth_controller import router as auth_router
 from src.expon.profile.interfaces.rest.controllers.profile_controller import router as profile_router
 from src.expon.presentation.interfaces.rest.controllers.presentation_controller import router as presentation_router
-from src.expon.feedback.interfaces.rest.controllers.feedback_controller import router as feedback_router
+from src.expon.feedback.interfaces.rest.feedback_controller import router as feedback_router
 from src.expon.subscription.interfaces.rest.controllers.subscription_controller import router as subscription_router
-
+from src.expon.feedback.infrastructure.persistence.jpa.feedback_orm import FeedbackORM
 from src.expon.shared.infrastructure.database import Base, engine
 # from src.expon.iam.infrastructure.persistence.jpa.entities.user_entity import UserEntity
 
