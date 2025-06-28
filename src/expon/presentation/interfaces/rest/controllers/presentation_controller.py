@@ -23,9 +23,7 @@ def upload_presentation(
         contents = file.file.read()
         if not contents:
             return {"success": False, "message": "El archivo está vacío."}
-        file.file.seek(0)  # Rebobina para que pueda ser leído por los servicios
-
-        # Crear instancias de los servicios
+        file.file.seek(0)  
         repository = PresentationRepository(db)
         storage_service = LocalStorageService()
         transcription_service = TranscriptionService()

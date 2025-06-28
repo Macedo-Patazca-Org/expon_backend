@@ -1,5 +1,7 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware  # 👈 nuevo
 
+# routers
 from src.expon.iam.interfaces.rest.controllers.auth_controller import router as auth_router
 from src.expon.profile.interfaces.rest.controllers.profile_controller import router as profile_router
 from src.expon.presentation.interfaces.rest.controllers.presentation_controller import router as presentation_router
@@ -7,13 +9,24 @@ from src.expon.feedback.interfaces.rest.feedback_controller import router as fee
 from src.expon.subscription.interfaces.rest.controllers.subscription_controller import router as subscription_router
 from src.expon.feedback.infrastructure.persistence.jpa.feedback_orm import FeedbackORM
 from src.expon.shared.infrastructure.database import Base, engine
-# from src.expon.iam.infrastructure.persistence.jpa.entities.user_entity import UserEntity
-
 
 app = FastAPI(
     title="Expon Backend API",
     version="1.0.0",
     description="Backend estructurado por bounded contexts con FastAPI"
+)
+
+# 👇 middleware CORS
+origins = [
+    "http://localhost:4200"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # routers
@@ -25,7 +38,6 @@ app.include_router(subscription_router, prefix="/api/v1/subscription", tags=["Su
 
 Base.metadata.create_all(bind=engine)
 
-# Ruta raíz temporal
 @app.get("/")
 def read_root():
     return {"mensaje": "¡Expon backend funcionando con estructura profesional!"}

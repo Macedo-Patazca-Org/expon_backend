@@ -9,7 +9,7 @@ class LocalStorageService:
         os.makedirs(self.base_path, exist_ok=True)
 
     def save(self, file: UploadFile) -> str:
-        # Genera un nombre único para evitar colisiones
+        
         filename = f"{uuid4()}_{file.filename}"
         file_path = os.path.join(self.base_path, filename)
 

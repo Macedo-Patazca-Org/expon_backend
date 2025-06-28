@@ -8,7 +8,7 @@ from fastapi import HTTPException
 from src.expon.profile.domain.model.aggregates.user_profile import UserProfile
 from src.expon.profile.interfaces.rest.requests.user_profile_request import UserProfileRequest 
 
-router = APIRouter(prefix="/profile", tags=["Profile"])
+router = APIRouter()
 
 @router.get("/me")
 def get_my_profile(
