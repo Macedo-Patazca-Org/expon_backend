@@ -9,7 +9,7 @@ from src.expon.feedback.infrastructure.persistence.jpa.feedback_repository impor
 from src.expon.presentation.infrastructure.persistence.jpa.repositories.presentation_repository import PresentationRepository
 from src.expon.feedback.application.internal.generate_feedback_service import GenerateFeedbackService
 
-router = APIRouter(prefix="/feedback", tags=["Feedback"])
+router = APIRouter()
 
 
 @router.post("/", response_model=FeedbackResponse)
