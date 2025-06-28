@@ -16,7 +16,12 @@ def get_my_profile(
     current_user=Depends(get_current_user)
 ):
     service = ProfileCommandService(ProfileRepository(db))
-    return service.get_profile_by_user(current_user.id)
+    profile = service.get_profile_by_user(current_user.id)
+
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+
+    return profile
 
 @router.put("/me")
 def update_my_profile(
