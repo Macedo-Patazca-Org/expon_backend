@@ -50,6 +50,7 @@ def upload_presentation(
         presentation = service.upload_and_analyze(file, current_user.id)
 
         return PresentationResponse(
+            id=presentation.id,
             transcript=presentation.transcript,
             dominant_emotion=presentation.dominant_emotion,
             emotion_probabilities=presentation.emotion_probabilities,
@@ -99,6 +100,7 @@ def get_presentation_by_id(
         raise HTTPException(status_code=404, detail="Presentación no encontrada")
 
     return PresentationResponse(
+        id=presentation.id,
         transcript=presentation.transcript,
         dominant_emotion=presentation.dominant_emotion,
         emotion_probabilities=presentation.emotion_probabilities,

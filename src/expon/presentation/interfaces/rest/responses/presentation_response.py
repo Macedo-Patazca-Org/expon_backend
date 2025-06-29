@@ -9,6 +9,7 @@ class AudioMetadataResponse(BaseModel):
     language: str
 
 class PresentationResponse(BaseModel):
+    id: UUID
     transcript: str
     dominant_emotion: Optional[str]
     emotion_probabilities: Dict[str, float]
