@@ -76,3 +76,4 @@ urllib3==2.5.0
 uvicorn==0.34.3
 vosk==0.3.45
 websockets==15.0.1
+gunicorn==21.2.0
