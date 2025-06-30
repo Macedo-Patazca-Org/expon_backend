@@ -1,13 +1,17 @@
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBearer
 from src.expon.iam.infrastructure.tokens.jwt.services.token_service_impl import TokenService
 from src.expon.iam.infrastructure.persistence.jpa.repositories.user_repository import UserRepository
 from src.expon.shared.infrastructure.dependencies import get_db
+from fastapi.security import HTTPAuthorizationCredentials
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+oauth2_scheme = HTTPBearer()
 
-def get_current_user(token: str = Depends(oauth2_scheme), db=Depends(get_db)):
-    payload = TokenService.decode_token(token)
+def get_current_user(
+    token: HTTPAuthorizationCredentials = Depends(oauth2_scheme),
+    db=Depends(get_db)
+):
+    payload = TokenService.decode_token(token.credentials)
     if not payload:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
