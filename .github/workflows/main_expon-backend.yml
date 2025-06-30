@@ -75,4 +75,4 @@ jobs:
         with:
           app-name: 'expon-backend'
           slot-name: 'Production'
-          
+          package: .
