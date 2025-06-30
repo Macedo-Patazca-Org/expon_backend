@@ -36,7 +36,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip -r release.zip . -x "venv/*" ".git/*" ".github/*" "release.zip"
+          zip -r release.zip main.py requirements.txt src/expon
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
