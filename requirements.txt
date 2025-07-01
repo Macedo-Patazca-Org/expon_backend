@@ -25,6 +25,7 @@ googleapis-common-protos==1.70.0
 greenlet==3.2.3
 grpcio==1.73.1
 grpcio-status==1.71.0
+gunicorn==23.0.0
 h11==0.16.0
 httpcore==1.0.9
 httplib2==0.22.0
@@ -76,4 +77,3 @@ urllib3==2.5.0
 uvicorn==0.34.3
 vosk==0.3.45
 websockets==15.0.1
-gunicorn==21.2.0
