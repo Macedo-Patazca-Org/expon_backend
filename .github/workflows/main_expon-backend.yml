@@ -31,6 +31,9 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Make startup.sh executable
+        run: chmod +x startup.sh
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
