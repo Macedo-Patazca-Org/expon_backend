@@ -18,7 +18,8 @@ app = FastAPI(
 
 # 👇 middleware CORS
 origins = [
-    "https://expon-frontend.netlify.app"
+    "https://expon-frontend.netlify.app",
+    "http://localhost:4200",
 ]
 
 app.add_middleware(
